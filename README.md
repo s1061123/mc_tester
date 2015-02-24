@@ -2,7 +2,7 @@
 Code snippet for multicast server/client written in C.
 
 # Compile
-make
+Just run "make"
 
 # Usage
 Just start mc_server and mc_client.
