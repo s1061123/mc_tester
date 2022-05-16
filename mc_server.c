@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <wchar.h>
+#include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
 char buf[256][256];
 
@@ -42,7 +45,8 @@ int main (int argc, char *argv[])
     addr.sin_port = htons(12345);
     addr.sin_addr.s_addr = inet_addr("239.1.1.2");
 
-    ipaddr = inet_addr("127.0.0.1");
+    //ipaddr = inet_addr("127.0.0.1");
+    ipaddr = inet_addr("192.168.123.254");
     if (setsockopt(sock, IPPROTO_IP, IP_MULTICAST_IF,
                    (char *)&ipaddr, sizeof(ipaddr)) != 0) {
         perror("setsockopt");

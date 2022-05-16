@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 
 int main (int argc, char *argv[])
 {
@@ -22,7 +25,8 @@ int main (int argc, char *argv[])
     bind(sock, (struct sockaddr *)&addr, sizeof(addr));
 
     memset(&mreq, 0, sizeof(mreq));
-    mreq.imr_interface.s_addr = inet_addr("127.0.0.1"); 
+    //mreq.imr_interface.s_addr = inet_addr("127.0.0.1");
+    mreq.imr_interface.s_addr = inet_addr("192.168.123.10");
     mreq.imr_multiaddr.s_addr = inet_addr("239.1.1.2");
 
     //printf("done\nsetsockopt...");
